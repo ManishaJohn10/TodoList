@@ -1,0 +1,32 @@
+<%- include("header") -%>
+
+<div class="box1" id="heading">       
+    <h1>My Todo List</h1>
+</div>        
+<div class="box">
+    <% for(var i=0;i<newListItem.length;i++){ %>  
+    <form action="/delete" method="post">     
+     <div class="item">
+        <div class="round">
+        <input type="checkbox" name="checkbox" value="<%=newListItem[i]._id %>" onchange="this.form.submit()" id="checkbox">            
+        <label for="checkbox"></label>
+        </div>
+        <p><%=newListItem[i].name%></p>
+        <br>
+        </div>
+    </form>
+   <% }%>  
+<!--This.form.submit means this=>that particular input(checkbox) this.form=>The form enclosing it  this.form.submit=>submits the form automatically
+onchange=>whne any change in the checkbox it runs the code automatically.ie in short when the checkbox is checked the form is submitted automatically.It is submitted with the value(id).Then post function findbyidandremove that data from the browser-->       
+        
+<form class="item" name="new" action="/" method="post" >
+        <input type="text" name="new" placeholder="Enter Task Here">
+        <hr>
+        <button id="b" type="submit">+</button> 
+</form>
+
+<form action="/reset" method="post">
+    <button class="clear-all">Clear All</button>
+  </form>
+  
+</div>
